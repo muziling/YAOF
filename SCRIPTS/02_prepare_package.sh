@@ -70,17 +70,17 @@ cp -a ../PATCH/bcmfullcone/*.patch target/linux/generic/hack-5.15/
 wget -qO - https://github.com/openwrt/openwrt/commit/bbf39d07.patch | patch -p1
 echo "net.netfilter.nf_conntrack_helper = 1" >>./package/kernel/linux/files/sysctl-nf-conntrack.conf
 # FW4
-mkdir -p package/network/config/firewall4/patches
-cp -f ../PATCH/firewall/firewall4_patches/*.patch ./package/network/config/firewall4/patches/
-mkdir -p package/libs/libnftnl/patches
-cp -f ../PATCH/firewall/libnftnl/*.patch ./package/libs/libnftnl/patches/
-sed -i '/PKG_INSTALL:=/iPKG_FIXUP:=autoreconf' package/libs/libnftnl/Makefile
-mkdir -p package/network/utils/nftables/patches
-cp -f ../PATCH/firewall/nftables/*.patch ./package/network/utils/nftables/patches/
+# mkdir -p package/network/config/firewall4/patches
+# cp -f ../PATCH/firewall/firewall4_patches/*.patch ./package/network/config/firewall4/patches/
+# mkdir -p package/libs/libnftnl/patches
+# cp -f ../PATCH/firewall/libnftnl/*.patch ./package/libs/libnftnl/patches/
+# sed -i '/PKG_INSTALL:=/iPKG_FIXUP:=autoreconf' package/libs/libnftnl/Makefile
+# mkdir -p package/network/utils/nftables/patches
+# cp -f ../PATCH/firewall/nftables/*.patch ./package/network/utils/nftables/patches/
 # Patch LuCI 以增添 FullCone 开关
-pushd feeds/luci
-patch -p1 <../../../PATCH/firewall/01-luci-app-firewall_add_nft-fullcone-bcm-fullcone_option.patch
-popd
+# pushd feeds/luci
+# patch -p1 <../../../PATCH/firewall/01-luci-app-firewall_add_nft-fullcone-bcm-fullcone_option.patch
+# popd
 
 ### Shortcut-FE 部分 ###
 # Patch Kernel 以支持 Shortcut-FE
